@@ -20,7 +20,7 @@ local lrepo = tArgs[2]
 local lbranch = tArgs[3]
 local lpackage = tArgs[4]
 
-local function getfile(user , repository , branch , filepath){
+local function getfile(user , repository , branch , filepath)
 	write( "Connecting to raw github ... " )
 	local response = http.get("https://raw.github.com/"..textutils.urlEncode( user ).."/"..textutils.urlEncode( repository ).."/"..textutils.urlEncode( branch ).."/"..filepath)
 	if response then
@@ -33,6 +33,7 @@ local function getfile(user , repository , branch , filepath){
 		response.close()
 		return 0
 	end
-}
+end
+
 local filelist = getfile(luser, lrepo, lbranch, lpackage)
 print(filelist)

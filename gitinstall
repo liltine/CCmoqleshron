@@ -21,7 +21,7 @@ local lbranch = tArgs[3]
 local lpackage = tArgs[4]
 
 local function getfile(user , repository , branch , filepath)
-	write( "Connecting to raw github ... " )
+	write( "Retriving "..filepath.." from raw gitHub .. ")
 	local response = http.get("https://raw.github.com/"..textutils.urlEncode( user ).."/"..textutils.urlEncode( repository ).."/"..textutils.urlEncode( branch ).."/"..filepath)
 	if response then
 		print( "Success." )
@@ -41,6 +41,13 @@ local function getfile(user , repository , branch , filepath)
 end
 
 local filelist = getfile(luser, lrepo, lbranch, lpackage)
-for index,line in ipairs(filelist) do
-	print(line)
+print("got filelist for package : ".. lpackage)
+for index,filepath in ipairs(filelist) do
+	local filedata = getfile(luser, lrepo, lbranch, filepath)
+	local file = fs.open( filepath, "w" )
+	for lineIndex,line in ipairs(filedata) do
+		file.writeLine(line)
+	end
+	fs.close()
+	print( "saved as : ".. filepath)
 end

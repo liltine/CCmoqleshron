@@ -48,6 +48,6 @@ for index,filepath in ipairs(filelist) do
 	for lineIndex,line in ipairs(filedata) do
 		file.writeLine(line)
 	end
-	fs.close()
+	file.close()
 	print( "saved as : ".. filepath)
 end

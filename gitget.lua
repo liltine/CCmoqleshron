@@ -26,7 +26,7 @@ if fs.exists( filepath ) then
 end
 
 write( "Connecting tao raw github ... " )
-local response = http.get("https://raw.github.com/"..textutils.urlEncode( user ).."/"..textutils.urlEncode( user ).."/"..filepath)
+local response = http.get("https://raw.github.com/"..textutils.urlEncode( user ).."/"..textutils.urlEncode( repo ).."/master/"..filepath)
 
 if response then
 	print( "Success." )

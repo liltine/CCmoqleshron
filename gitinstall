@@ -25,9 +25,14 @@ local function getfile(user , repository , branch , filepath)
 	local response = http.get("https://raw.github.com/"..textutils.urlEncode( user ).."/"..textutils.urlEncode( repository ).."/"..textutils.urlEncode( branch ).."/"..filepath)
 	if response then
 		print( "Success." )
-		local sResponse = response.readAll()
+		local fileData = {}
+		local line = response.readLine()
+		repeat
+			table.insert(fileData,line)
+			line = response.readLine()
+		until line == nil
 		response.close()
-		return sResponse
+		return fileData
 	else
 		print( "Failed." )
 		response.close()

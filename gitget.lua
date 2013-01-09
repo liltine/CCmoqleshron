@@ -1,10 +1,10 @@
-﻿local function printUsage()
+local function printUsage()
 	print( "Usages:" )
 	print( "gitget <user> <repository> <filepath>" )
 end
 
 local tArgs = { ... }
-if #tArgs != 3 then
+if #tArgs < 3 then
 	printUsage()
 	return
 end
@@ -38,7 +38,7 @@ if response then
 	file.write( sResponse )
 	file.close()
 
-	print( "Downloaded as "..sFile )
+	print( "Downloaded as "..filepath )
 
 else
 	print( "Failed." )

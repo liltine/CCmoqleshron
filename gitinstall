@@ -1,4 +1,4 @@
-os.loadAPI("/GitApi")
+os.loadAPI("/GitApi/GitApi")
 
 local function printUsage()
 	print( "Usages:" )

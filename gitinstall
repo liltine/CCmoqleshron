@@ -41,4 +41,6 @@ local function getfile(user , repository , branch , filepath)
 end
 
 local filelist = getfile(luser, lrepo, lbranch, lpackage)
-print(filelist)
+for index,line in ipairs(filelist) do
+	print(line)
+end

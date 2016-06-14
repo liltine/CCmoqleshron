@@ -18,7 +18,7 @@ function getfile(user , repository , branch , filepath)
 		response.close()
 		return fileData
 	else
-		print( "Failed." )
+		print( "Failed to get : ".. "https://raw.github.com/"..textutils.urlEncode( user ).."/"..textutils.urlEncode( repository ).."/"..textutils.urlEncode( branch ).."/"..filepath)
 		response.close()
 		return 0
 	end

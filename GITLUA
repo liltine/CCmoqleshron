@@ -2,3 +2,4 @@ GitApi/GitApi
 gitinstall
 updateGITLUA
 GitCopy
+Install.lua
